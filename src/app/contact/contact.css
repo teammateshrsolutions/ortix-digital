@@ -1,0 +1,122 @@
+.contact-page .inner-hero {
+  padding-block: clamp(36px, 6vw, 76px);
+  background: radial-gradient(ellipse at 23% 85%, #510013 0%, #210008 40%, #000 82%);
+}
+
+.contact-page .inner-hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  align-items: start;
+  gap: clamp(30px, 6vw, 88px);
+}
+
+.contact-page .inner-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(2.4rem, 5.25vw, 4.4rem);
+  text-wrap: initial;
+}
+
+.contact-page-location {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 30px;
+  padding-top: 17px;
+  border-top: 1px solid #ffffff46;
+}
+
+.contact-page-location .location svg,
+.contact-page-location .text-link {
+  color: #ff8585;
+}
+
+.contact-page-location .location svg {
+  flex: none;
+}
+
+.contact-enquiry {
+  padding: clamp(20px, 3.5vw, 38px);
+  border: 1px solid #d9cfd1;
+  border-radius: 22px;
+  background: white;
+  color: black;
+}
+
+.contact-enquiry-heading h2 {
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+}
+
+.contact-enquiry-heading p {
+  margin: 10px 0 24px;
+  color: #514d4d;
+}
+
+.contact-enquiry .contact-form {
+  padding: 0;
+}
+
+.contact-enquiry .contact-form input,
+.contact-enquiry .contact-form select,
+.contact-enquiry .contact-form textarea {
+  background: #f9f7f7;
+}
+
+.contact-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-steps li {
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid #ded4d6;
+  border-radius: 16px;
+  background: white;
+}
+
+.contact-steps svg {
+  color: var(--burgundy);
+  margin-bottom: 18px;
+}
+
+.contact-steps .copy {
+  margin-top: 10px;
+}
+
+.contact-office {
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+  overflow: hidden;
+  border: 1px solid #ded4d6;
+  border-radius: 22px;
+  background: var(--paper);
+}
+
+.contact-office-heading {
+  align-self: center;
+  padding: clamp(24px, 4vw, 52px);
+}
+
+.contact-office-address {
+  margin-block: 16px 24px;
+  color: #514d4d;
+  font-style: normal;
+  line-height: 1.65;
+}
+
+@media (max-width: 767px) {
+  .contact-page .inner-hero-split,
+  .contact-steps,
+  .contact-office {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-enquiry .contact-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-enquiry .button {
+    width: 100%;
+  }
+}

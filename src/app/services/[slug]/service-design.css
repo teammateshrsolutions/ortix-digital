@@ -1,0 +1,241 @@
+.service-landing .inner-hero,
+.service-consultation {
+  background: radial-gradient(ellipse at 80% 60%, #520013 0%, #240007 45%, #000 87%);
+}
+
+.service-landing .inner-hero {
+  padding-block: clamp(44px, 6vw, 90px);
+}
+
+.service-landing .inner-hero-split,
+.service-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(25px, 6vw, 84px);
+}
+
+.service-landing .inner-hero-split {
+  align-items: center;
+}
+
+.service-landing .inner-hero h1 {
+  max-width: 14ch;
+  text-wrap: initial;
+}
+
+.service-hero-art {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  justify-self: end;
+  border: 1px solid #ff85854d;
+  border-radius: 22px;
+}
+
+.service-heading {
+  margin-bottom: clamp(24px, 4vw, 44px);
+}
+
+.service-heading .copy {
+  max-width: 63ch;
+  margin-top: 14px;
+}
+
+.service-card-grid,
+.service-process-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.service-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-detail-card,
+.service-fit-panel,
+.service-example {
+  border: 1px solid #e5dadd;
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 34px);
+  background: white;
+}
+
+.service-detail-card svg,
+.service-fit-panel svg,
+.service-example svg {
+  color: var(--burgundy);
+  flex: none;
+}
+
+.service-detail-card svg {
+  margin-bottom: 22px;
+}
+
+.service-detail-card .copy,
+.service-example .copy {
+  margin-top: 12px;
+}
+
+.service-fit-panel {
+  background: var(--paper);
+}
+
+.service-fit-panel ul {
+  display: grid;
+  gap: 16px;
+  margin-block: 20px;
+}
+
+.service-fit-panel li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.service-fit-panel svg {
+  align-self: start;
+  margin-top: 3px;
+}
+
+.service-process {
+  background: var(--deep-gradient);
+}
+
+.service-process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.service-process-grid li {
+  border-top: 2px solid var(--red);
+  padding: 20px 12px 0 0;
+}
+
+.service-step-number {
+  display: block;
+  color: #ff8585;
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+
+.service-process-grid .copy {
+  margin-top: 12px;
+}
+
+.service-example {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+  border-left: 4px solid var(--burgundy);
+}
+
+.service-landing .faq-list summary h3 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  letter-spacing: -.01em;
+}
+
+.service-consultation .copy {
+  max-width: 62ch;
+}
+
+.related-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+.related-service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 14px;
+  height: 100%;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid #6d001a;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at top right, #3a000e, #100406 68%);
+  color: white;
+  transition: border-color .2s, box-shadow .2s, translate .2s;
+}
+
+.related-service-card:hover {
+  translate: 0 -3px;
+  border-color: #a92741;
+  box-shadow: 0 12px 30px #6d001a24;
+}
+
+.related-service-card:focus-visible {
+  outline-color: var(--burgundy);
+}
+
+.related-service-card h3 {
+  text-wrap: initial;
+}
+
+.related-service-card p {
+  color: #e0ced2;
+  line-height: 1.55;
+}
+
+.related-service-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  aspect-ratio: 1;
+  border: 1px solid #a92741;
+  border-radius: 12px;
+  background: var(--deep-gradient);
+  color: #ff8585;
+}
+
+.related-service-icon svg {
+  width: 28px;
+}
+
+.related-service-action {
+  margin-top: auto;
+  padding-top: 8px;
+  color: #ff8585;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+@media (max-width: 1023px) {
+  .service-process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-landing .inner-hero-split,
+  .service-split,
+  .service-card-grid,
+  .service-process-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .service-hero-art {
+    justify-self: start;
+  }
+
+  .service-consultation .cta-row {
+    display: grid;
+  }
+
+  .service-consultation .button {
+    justify-self: start;
+  }
+}
+.service-consultation-note {
+  max-width: 48ch;
+  margin-top: 14px;
+  color: #e0ced2;
+  font-size: .9rem;
+}
+

@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ORTIX DIGITAL
 
-## Getting Started
+Next.js App Router website for a digital marketing agency serving Bengaluru and Karnataka.
 
-First, run the development server:
+## Local development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Run `npm run dev` and open [localhost:3000](http://localhost:3000/). In PowerShell environments that block npm scripts, run `npm.cmd run dev`.
+
+## Enquiries
+
+The contact forms call a Next.js Server Action. It validates the submitted values and writes each accepted enquiry as a separate JSON record with a generated ID and timestamp. The confirmation appears after the file is saved. The workflow requires no external credentials and sends no email.
+
+Local development defaults to the Git-ignored `.private/enquiries` directory. Production requires `ENQUIRY_STORAGE_DIR` to be an absolute path on a durable, private, writable volume outside all web-served directories. Set permissions for the application account and authorized staff. Configure backups, retention and access using the approved privacy policy. This implementation expects a Node.js deployment with persistent storage. Use a shared durable datastore or a delivery provider before deploying to infrastructure with ephemeral filesystems.
+
+## Production setup
+
+- Set `SITE_URL` to the confirmed HTTPS origin before building. It enables absolute canonicals, share URLs, breadcrumb schema and sitemap entries. An unset value keeps the development site out of search.
+- Set `SITE_INDEXABLE=false` for a preview that needs the production canonical URLs. The preview emits noindex and an empty sitemap. Use access controls for private staging.
+- Set `BUSINESS_PHONE` in international format (a plus sign and digits) and `BUSINESS_EMAIL` only after confirming the public contact details. These are displayed on the site and in Organization structured data.
+- Confirm whether clients visit a staffed ORTIX location, ORTIX visits clients, or services are delivered online only. Follow Google's Business Profile eligibility rules before creating or editing a listing. Confirm any public address and profile URL before adding them to the site or structured data.
+- After deployment, crawl the canonical HTTPS site and check final redirect destinations, indexability and sitemap entries. Verify the property in Google Search Console, submit `/sitemap.xml`, and inspect the homepage and priority service URLs.
+- Approve and finalize the privacy policy and terms, then update their indexing and sitemap configuration.
+- Replace illustrative portfolio concepts with approved client work when available.
+- Configure storage and submit a test enquiry through the deployed site. Confirm that authorized staff can retrieve it.
+
+## Checks
+
+```sh
+npm run lint
+npx tsc --noEmit
+npm run build
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

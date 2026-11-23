@@ -1,0 +1,132 @@
+.about-page .inner-hero {
+  background: radial-gradient(ellipse at 85% 60%, #420010 0%, #140005 52%, #000 88%);
+  padding-block: clamp(42px, 6vw, 76px);
+}
+
+.about-page .inner-hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.about-page .inner-hero h1 {
+  max-width: 12ch;
+  text-wrap: initial;
+}
+
+.about-page .inner-hero .copy {
+  max-width: 48ch;
+}
+
+.about-hero-art {
+  width: 100%;
+  height: auto;
+  justify-self: center;
+  border: 1px solid #ffffff24;
+  border-radius: 18px;
+}
+
+.about-purpose,
+.about-principles {
+  display: grid;
+  gap: 16px;
+}
+
+.about-purpose {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-purpose-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(24px, 4vw, 50px);
+  border: 1px solid #ded4d6;
+  border-radius: 18px;
+  background: white;
+}
+
+.about-purpose-card.dark {
+  background: var(--deep-gradient);
+  border-color: var(--burgundy);
+}
+
+.about-purpose-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 240px;
+  aspect-ratio: 1;
+  right: -100px;
+  bottom: -160px;
+  border: 24px solid #6d001a12;
+  border-radius: 50%;
+}
+
+.about-purpose-card.dark::after {
+  border-color: #ff00004d;
+}
+
+.about-purpose-card svg,
+.about-principles svg {
+  width: 30px;
+  height: 30px;
+  color: var(--burgundy);
+}
+
+.about-purpose-card.dark svg,
+.about-principles svg {
+  color: #ff8585;
+}
+
+.about-work {
+  background: linear-gradient(125deg, #000 30%, #30000b);
+}
+
+.about-principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-principles article {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid #ffffff33;
+  border-radius: 18px;
+  background: #ffffff09;
+}
+
+.about-faq summary:hover {
+  color: var(--burgundy);
+}
+
+.about-cta .copy {
+  max-width: 65ch;
+}
+
+@media (max-width: 767px) {
+  .about-page .inner-hero-split,
+  .about-page .split,
+  .about-purpose,
+  .about-principles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-hero-art {
+    max-width: 480px;
+  }
+
+  .about-page .cta-row {
+    align-items: start;
+    display: grid;
+  }
+
+  .about-page .cta-row .button {
+    justify-self: start;
+  }
+}
