@@ -64,6 +64,10 @@
   animation: enter .65s ease-out 140ms backwards;
 }
 
+.signal-hero .kicker::before {
+  background: white;
+}
+
 .signal-hero-visual::before {
   content: "";
   position: absolute;
