@@ -9,7 +9,7 @@ export function Brand({ preload = false }: { preload?: boolean }) {
   return (
     <Link className="brand" href="/">
       {logoAvailable ? (
-        <Image src="/brand/ortix-logo.png" alt="ORTIX DIGITAL home" fill sizes="148px" preload={preload} />
+        <Image src="/brand/ortix-logo.png" alt="ORTIX DIGITAL home" fill sizes="108px" preload={preload} />
       ) : <span>ORTIX DIGITAL</span>}
     </Link>
   );

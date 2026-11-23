@@ -56,8 +56,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.65rem); letter-spacing: -.02em; }
 .business-links svg { flex: none; }
 .site-header { position: sticky; top: 0; z-index: 20; background: black; color: white; border-bottom: 1px solid #292929; }
 .header-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; height: 79px; }
-.brand { display: grid; position: relative; width: 148px; height: 54px; align-items: center; font-weight: 800; }
-.brand img { object-fit: contain; }
+.brand { display: grid; position: relative; width: 108px; height: 54px; align-items: center; font-weight: 800; }
+.brand img { object-fit: contain; border-radius: 4px; }
 .site-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
 .site-nav a:not(.button) { display: flex; align-items: center; min-height: 44px; font-size: .9rem; white-space: nowrap; color: #ddd; }
 .site-nav a:hover, .site-nav a[aria-current="page"], .nav-service[data-active="true"] > div > a { color: #ff6262; }
