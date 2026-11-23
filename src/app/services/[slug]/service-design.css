@@ -63,7 +63,6 @@
 .service-detail-card svg,
 .service-fit-panel svg,
 .service-example svg {
-  color: var(--burgundy);
   flex: none;
 }
 
@@ -189,7 +188,6 @@
   border: 1px solid #a92741;
   border-radius: 12px;
   background: var(--deep-gradient);
-  color: #ff8585;
 }
 
 .related-service-icon svg {

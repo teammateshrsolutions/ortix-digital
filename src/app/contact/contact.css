@@ -24,7 +24,6 @@
   border-top: 1px solid #ffffff46;
 }
 
-.contact-page-location .location svg,
 .contact-page-location .text-link {
   color: #ff8585;
 }
@@ -74,7 +73,6 @@
 }
 
 .contact-steps svg {
-  color: var(--burgundy);
   margin-bottom: 18px;
 }
 

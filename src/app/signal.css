@@ -242,10 +242,6 @@
   border-bottom: 1px solid var(--signal-rule);
 }
 
-.signal-strengths svg {
-  color: #ff6666;
-}
-
 .signal-strengths .copy {
   margin-top: 7px;
 }
