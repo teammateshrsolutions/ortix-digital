@@ -48,25 +48,26 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.65rem); letter-spacing: -.02em; }
 .button.outline { background: white; border-color: currentColor; color: black; }
 .button.light { background: black; color: white; }
 .button:focus-visible { outline-color: var(--burgundy); }
-.dark .button:focus-visible, .site-header .button:focus-visible { outline-color: white; }
+.dark .button:focus-visible { outline-color: white; }
 .text-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--burgundy); text-decoration: underline; text-underline-offset: .3em; }
 .business-links a { display: inline-flex; align-items: center; gap: 14px; min-height: 44px; color: var(--burgundy); font-weight: 700; white-space: nowrap; }
 .business-links a:hover { text-decoration: underline; text-underline-offset: .25em; }
 .dark .business-links a, .site-footer .business-links a:hover { color: white; }
 .business-links svg { flex: none; }
-.site-header { position: sticky; top: 0; z-index: 20; background: black; color: white; border-bottom: 1px solid #292929; }
+.site-header { position: sticky; top: 0; z-index: 20; background: white; color: #171717; border-bottom: 1px solid #e5e5e5; }
+.site-header svg[stroke="currentColor"] { color: inherit; }
 .header-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; height: 79px; }
 .brand { display: grid; position: relative; width: 108px; height: 54px; align-items: center; font-weight: 800; }
 .brand img { object-fit: contain; border-radius: 4px; }
 .site-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
-.site-nav a:not(.button) { display: flex; align-items: center; min-height: 44px; font-size: .9rem; white-space: nowrap; color: #ddd; }
-.site-nav a:hover, .site-nav a[aria-current="page"], .nav-service[data-active="true"] > div > a { color: #ff6262; }
+.site-nav a:not(.button) { display: flex; align-items: center; min-height: 44px; font-size: .9rem; white-space: nowrap; color: inherit; }
+.site-nav a:not(.button):is(:hover, [aria-current="page"]), .nav-service[data-active="true"] > div > a:not(.button) { color: var(--burgundy); }
 .nav-service { position: relative; }
 .nav-service-row { display: flex; align-items: center; gap: 3px; }
 .nav-service-row button, .menu-toggle { display: grid; place-items: center; min-width: 44px; min-height: 44px; }
 .nav-service-row button svg { transition: transform .2s; }
 .nav-service-row button[aria-expanded="true"] svg { transform: rotate(180deg); }
-.service-menu { position: absolute; top: 100%; left: 0; width: max-content; background: #141111; border: 1px solid #413636; border-radius: 10px; padding: 8px 16px; animation: enter .2s ease both; }
+.service-menu { position: absolute; top: 100%; left: 0; width: max-content; background: white; border: 1px solid #e5e5e5; border-radius: 10px; padding: 8px 16px; animation: enter .2s ease both; }
 .menu-toggle, .site-nav .mobile-cta { display: none; }
 .skip-link { position: fixed; left: 20px; top: 10px; z-index: 30; background: white; color: black; padding: 12px; transform: translateY(-160%); }
 .skip-link:focus { transform: none; }
@@ -155,10 +156,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.65rem); letter-spacing: -.02em; }
 @media (max-width: 1023px) {
   .menu-toggle { display: grid; }
   .desktop-cta { display: none; }
-  .site-nav { display: none; position: absolute; top: 100%; inset-inline: 0; background: black; padding: 12px 20px 22px; max-height: calc(100dvh - 80px); overflow: auto; }
+  .site-nav { display: none; position: absolute; top: 100%; inset-inline: 0; background: white; padding: 12px 20px 22px; max-height: calc(100dvh - 80px); overflow: auto; }
   .site-nav[data-open="true"] { display: grid; gap: 0; animation: enter .2s ease both; }
   .site-nav .mobile-cta { display: inline-flex; justify-self: start; margin-top: 14px; }
-  .site-nav > div { border-bottom: 1px solid #292929; }
+  .site-nav > div { border-bottom: 1px solid #e5e5e5; }
   .nav-service-row { justify-content: space-between; }
   .service-menu { position: static; width: auto; margin-bottom: 8px; }
   .hero-grid { min-height: 590px; }
