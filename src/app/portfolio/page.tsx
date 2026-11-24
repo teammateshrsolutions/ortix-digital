@@ -1,3 +1,4 @@
+import { servicePath } from "@/data/route-slugs";
 import Image from "next/image";
 import Link from "next/link";
 import { ConceptGrid } from "@/components/home/visuals";
@@ -28,8 +29,8 @@ export default function PortfolioPage() {
         <h3 className="mt-6">What we built</h3>
         <p className="copy mt-2">We created a responsive homepage, individual service pages with distinct search topics, and a consultation form with server-side validation. The homepage uses custom SVG icons so visitors can scan the services quickly.</p>
         <h3 className="mt-6">What we verified</h3>
-        <p className="copy mt-2">Local checks confirmed that the service pages and internal links responded and that a valid test enquiry was saved successfully.</p>
-        <Link className="text-link mt-4" href="/services/website-development/">Explore Website Development</Link>
+        <p className="copy mt-2">Local checks confirmed that the service pages and internal links responded and that a valid test enquiry prepared a WhatsApp message for the business number.</p>
+        <Link className="text-link mt-4" href={servicePath("website-development")}>Explore Website Development</Link>
       </article>
     </section>
     <section className="section paper" id="concept-showcase">

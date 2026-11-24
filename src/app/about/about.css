@@ -1,5 +1,7 @@
 .about-page .inner-hero {
-  background: radial-gradient(ellipse at 85% 60%, #420010 0%, #140005 52%, #000 88%);
+  background: radial-gradient(ellipse at 90% 20%, #eed9e1, #fcf7f9 55%, #fff 85%);
+  color: #201218;
+  border-bottom: 1px solid #efdee4;
   padding-block: clamp(42px, 6vw, 76px);
 }
 
@@ -17,14 +19,16 @@
 
 .about-page .inner-hero .copy {
   max-width: 48ch;
+  color: #51454a;
 }
 
 .about-hero-art {
   width: 100%;
   height: auto;
   justify-self: center;
-  border: 1px solid #ffffff24;
+  border: 1px solid #eadbe0;
   border-radius: 18px;
+  box-shadow: 0 18px 48px #531b2d1a;
 }
 
 .about-purpose,

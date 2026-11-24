@@ -1,3 +1,4 @@
+import { servicePath } from "@/data/route-slugs";
 import Link from "next/link";
 import { ChartNoAxesCombined, ChevronDown, ClipboardCheck, MousePointer2, Search, Target } from "lucide-react";
 import { serviceGuides } from "@/data/service-guides";
@@ -36,7 +37,7 @@ export function GoogleAdsSections() {
           <li><MousePointer2 size={18} aria-hidden="true" /><span>Give them a relevant page where they can compare the offer and get in touch.</span></li>
           <li><ClipboardCheck size={18} aria-hidden="true" /><span>Agree who will respond and how your team will assess each enquiry.</span></li>
         </ul>
-        <p className="copy">If your priority is to improve organic visibility over time, explore <Link className="underline" href="/services/seo/">SEO services</Link>.</p>
+        <p className="copy">If your priority is to improve organic visibility over time, explore <Link className="underline" href={servicePath("seo")}>SEO services</Link>.</p>
       </div>
     </div></section>
     <section className="section dark service-process"><div className="shell">

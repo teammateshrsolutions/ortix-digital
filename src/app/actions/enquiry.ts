@@ -1,8 +1,6 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
-import { mkdir, rename, unlink, writeFile } from "node:fs/promises";
-import { isAbsolute, join, relative, sep } from "node:path";
+import { businessWhatsAppUrl } from "@/lib/business";
 import { z } from "zod";
 import { services } from "@/data/services";
 
@@ -16,7 +14,7 @@ const schema = z.object({
 });
 
 export type EnquiryFields = z.infer<typeof schema>;
-export type EnquiryState = { message?: string; success?: boolean; errors?: Partial<Record<keyof EnquiryFields, string[]>> };
+export type EnquiryState = { message?: string; whatsAppUrl?: string; errors?: Partial<Record<keyof EnquiryFields, string[]>> };
 
 export async function submitEnquiry(_state: EnquiryState, formData: FormData): Promise<EnquiryState> {
   if (!(formData instanceof FormData)) return { message: "Submit your enquiry using the contact form." };
@@ -25,27 +23,28 @@ export async function submitEnquiry(_state: EnquiryState, formData: FormData): P
   if (!result.success) return { message: "Check the highlighted fields and try again.", errors: z.flattenError(result.error).fieldErrors };
   if (formData.get("website")) return { message: "Your enquiry could not be submitted. Please try again." };
 
-  const directory = process.env.ENQUIRY_STORAGE_DIR || (process.env.NODE_ENV === "development" ? join(process.cwd(), ".private", "enquiries") : undefined);
-  if (!directory || !isAbsolute(directory)) {
-    return { message: "The enquiry form is temporarily unavailable. Please try again later." };
-  }
+  const intent = z.enum(["consultation", "audit", "quote"]).safeParse(formData.get("intent") ?? "consultation");
+  if (!intent.success) return { message: "Choose a valid enquiry type." };
+  const website = intent.data === "audit" ? formData.get("auditUrl") : null;
+  const auditUrl = z.string().trim().max(300).refine(value => !value || URL.canParse(value) && ["http:", "https:"].includes(new URL(value).protocol)).safeParse(website ?? "");
+  if (!auditUrl.success) return { message: "Enter a valid website URL or leave it blank." };
 
-  const relativeToPublic = relative(join(process.cwd(), "public"), directory);
-  const outsidePublic = isAbsolute(relativeToPublic) || relativeToPublic === ".." || relativeToPublic.startsWith(".." + sep);
-  if (!outsidePublic) {
-    return { message: "The enquiry form is temporarily unavailable. Please try again later." };
-  }
-
-  const id = randomUUID();
-  const temporary = join(directory, "." + id + ".tmp");
-  try {
-    await mkdir(directory, { recursive: true, mode: 0o700 });
-    await writeFile(temporary, JSON.stringify({ id, receivedAt: new Date().toISOString(), ...result.data }, null, 2), { encoding: "utf8", mode: 0o600, flag: "wx" });
-    await rename(temporary, join(directory, id + ".json"));
-    return { success: true, message: "Thank you. Your enquiry was received." };
-  } catch {
-    await unlink(temporary).catch(() => undefined);
-    console.error("ORTIX enquiry storage failed.");
-    return { message: "Your enquiry could not be saved. Please try again." };
-  }
+  const subject = { consultation: "Consultation", audit: "Free marketing audit", quote: "Custom quote" }[intent.data];
+  const { name, email, phone, company, service, details } = result.data;
+  const serviceTitle = services.find(item => item.slug === service)?.title ?? "Help me choose";
+  const message = [
+    subject + " enquiry for Ortix Digital",
+    "",
+    "Name: " + name,
+    "Email: " + email,
+    ...(phone ? ["Phone: " + phone] : []),
+    ...(company ? ["Company: " + company] : []),
+    "Service: " + serviceTitle,
+    ...(auditUrl.data ? ["Website: " + auditUrl.data] : []),
+    "",
+    "Project details: " + details,
+  ].join("\n");
+  const url = new URL(businessWhatsAppUrl);
+  url.searchParams.set("text", message);
+  return { whatsAppUrl: url.href };
 }

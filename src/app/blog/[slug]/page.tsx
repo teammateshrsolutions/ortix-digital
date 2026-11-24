@@ -1,3 +1,4 @@
+import { servicePath } from "@/data/route-slugs";
 import Image from "next/image";
 import Link from "next/link";
 import { ClipboardList } from "lucide-react";
@@ -15,7 +16,7 @@ const sectionId = (index: number) => `section-${index + 1}`;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return guidePosts.map(({ slug }) => ({ slug }));
+  return guidePosts.map(({ urlSlug }) => ({ slug: urlSlug }));
 }
 
 async function resolvePost(params: Props["params"]) {
@@ -36,7 +37,6 @@ export async function generateMetadata({ params }: Props) {
 export default async function BlogArticlePage({ params }: Props) {
   const post = await resolvePost(params);
   const service = services.find(({ slug }) => slug === post.service);
-  const servicePath = `/services/${post.service}/`;
 
   return <div className="blog-article">
     <InnerHero
@@ -71,7 +71,7 @@ export default async function BlogArticlePage({ params }: Props) {
         <div><h2>Talk Through Your Next Step</h2><p className="copy">Share what you want to improve and the work you have already done.</p></div>
         <div className="actions">
           <Link className="button" href="/contact/">Request a Consultation</Link>
-          <Link className="button outline" href={servicePath}>Explore {service?.title}</Link>
+          <Link className="button outline" href={servicePath(post.service)}>Explore {service?.title}</Link>
         </div>
       </div>
     </section>

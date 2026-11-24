@@ -1,3 +1,4 @@
+import { servicePath } from "@/data/route-slugs";
 import Image from "next/image";
 import Link from "next/link";
 import { ClipboardCheck } from "lucide-react";
@@ -64,7 +65,7 @@ export default function SeoAuditArticle() {
         <div><h2>Need help deciding what to fix?</h2><p className="copy">Bring your website, priority services and the areas you cover to a consultation. We can discuss what to review first and which fixes need a content owner or developer.</p></div>
         <div className="actions">
           <Link className="button" href="/contact/">Request a Consultation</Link>
-          <Link className="button outline" href="/services/seo/">Explore SEO Services</Link>
+          <Link className="button outline" href={servicePath("seo")}>Explore SEO Services</Link>
         </div>
       </div>
     </section>

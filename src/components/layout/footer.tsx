@@ -1,18 +1,21 @@
+import { servicePath } from "@/data/route-slugs";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { Brand } from "./brand";
 import { BusinessLinks } from "./business-links";
+import { locationsPath } from "@/data/locations";
 import { navigation } from "@/data/navigation";
 import { services } from "@/data/services";
 import { officeAddress } from "@/lib/business";
+import "./footer.css";
 
 export default function Footer() {
   return (
-    <footer className="site-footer dark">
+    <footer className="site-footer">
       <div className="shell footer-grid">
         <div><Brand /><p>Creative strategy, performance marketing and digital experiences for businesses across Karnataka.</p><strong>Creative ideas. Powerful digital growth.</strong></div>
-        <div><h2>Quick Links</h2><ul>{navigation.map(({ href, label }) => <li key={href}><Link href={href}>{label}</Link></li>)}</ul></div>
-        <div><h2>Services</h2><ul>{services.map(({ slug, title }) => <li key={slug}><Link href={`/services/${slug}/`}>{title}</Link></li>)}</ul></div>
+        <div><h2>Quick Links</h2><ul>{navigation.map(({ href, label }) => <li key={href}><Link href={href}>{label}</Link></li>)}<li><Link href={locationsPath}>Locations</Link></li></ul></div>
+        <div><h2>Services</h2><ul>{services.map(({ slug, title }) => <li key={slug}><Link href={servicePath(slug)}>{title}</Link></li>)}</ul></div>
         <div className="footer-contact">
           <h2>Get in Touch</h2>
           <address className="location not-italic">

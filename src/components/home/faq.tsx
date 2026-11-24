@@ -16,7 +16,11 @@ export function FAQ() {
     <div><p className="kicker">FAQ</p><h2>Frequently Asked Questions</h2></div>
     <div className="faq-list">
       {questions.map(([question, answer]) => <details key={question} name="ortix-faq"><summary>{question}<ChevronDown size={19} aria-hidden="true" /></summary><p className="copy">{answer}</p></details>)}
-      <details name="ortix-faq"><summary>What happens in the free consultation?<ChevronDown size={19} aria-hidden="true" /></summary><p className="copy">We discuss your goals, current marketing, and where you need help. Share your website or active channels if you have them so we can talk through what to prioritize. <Link className="text-link" href="#contact">Request a consultation</Link>.</p></details>
+      <details name="ortix-faq">
+        <summary>What happens in the free consultation?<ChevronDown size={19} aria-hidden="true" /></summary>
+        <p className="copy">We discuss your goals, current marketing, and where you need help. Share your website or active channels if you have them so we can talk through what to prioritize.</p>
+        <Link className="text-link mb-4" href="#contact">Request a consultation</Link>
+      </details>
     </div>
   </div></section>;
 }

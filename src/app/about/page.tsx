@@ -30,8 +30,12 @@ export default function AboutPage() {
       eyebrow="Who We Are"
       description="We help businesses in Bengaluru get found online and turn interest into enquiries."
       current={{ label: "About Us", href: "/about/" }}
-      visual={<Image className="about-hero-art" src="/brand/about-campaign-team.webp" alt="Illustrative scene of three people discussing a digital marketing campaign" width={1200} height={900} sizes="(max-width: 767px) 90vw, (max-width: 1320px) 50vw, 680px" preload />}
-    />
+      visual={<Image className="about-hero-art" src="/brand/about-studio-mockup.webp" alt="Illustrative creative studio with an Ortix Digital sign on the wall" width={1440} height={1080} sizes="(max-width: 767px) 90vw, (max-width: 1320px) 50vw, 680px" preload />}
+    >
+      <div className="actions">
+        <Link className="button" href={servicesSection}>Explore Our Services</Link>
+      </div>
+    </InnerHero>
     <section className="section"><div className="shell split">
       <h2>Who We Are</h2>
       <div>

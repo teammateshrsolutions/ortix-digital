@@ -1,7 +1,7 @@
+import { servicePath } from "@/data/route-slugs";
 import Link from "next/link";
 import { ChartNoAxesCombined, ChevronDown, ClipboardCheck, FileSearch, MapPin, MousePointer2, Search, SlidersHorizontal, Target } from "lucide-react";
 import { searchGuides } from "@/data/guides/search";
-import { seoAuditPost } from "@/data/blog";
 
 const [fit, included, , example] = searchGuides.seo.sections;
 
@@ -44,7 +44,6 @@ export function SeoSections() {
             </article>;
           })}
         </div>
-        <Link className="text-link mt-5" href={seoAuditPost.path}>Read our SEO audit checklist</Link>
       </div>
     </section>
     <section className="section">
@@ -53,7 +52,7 @@ export function SeoSections() {
         <div className="service-fit-panel">
           <h3>Signs an SEO review could help</h3>
           <ul>{situations.map(situation => <li key={situation}><Target size={18} aria-hidden="true" /><span>{situation}</span></li>)}</ul>
-          <p className="copy">If you need to reach active searchers sooner, <Link className="underline" href="/services/google-ads/">Google Ads</Link> can run alongside SEO when your landing page and budget are ready.</p>
+          <p className="copy">If you need to reach active searchers sooner, <Link className="underline" href={servicePath("google-ads")}>Google Ads</Link> can run alongside SEO when your landing page and budget are ready.</p>
         </div>
       </div>
     </section>

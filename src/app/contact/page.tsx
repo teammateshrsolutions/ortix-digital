@@ -36,7 +36,10 @@ export default function ContactPage() {
     >
       <div className="contact-page-location">
         <p className="location"><MapPin size={20} aria-hidden="true" />{serviceArea}</p>
-        <Link className="text-link" href="#office-location">View office location</Link>
+        <div className="actions">
+          <Link className="text-link" href="#office-location">View office location</Link>
+          <Link className="text-link" href="/locations/yelahanka/">Digital marketing in Yelahanka</Link>
+        </div>
         <BusinessLinks />
       </div>
     </InnerHero>

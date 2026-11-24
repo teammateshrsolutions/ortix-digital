@@ -8,9 +8,7 @@ Run `npm run dev` and open [localhost:3000](http://localhost:3000/). In PowerShe
 
 ## Enquiries
 
-The contact forms call a Next.js Server Action. It validates the submitted values and writes each accepted enquiry as a separate JSON record with a generated ID and timestamp. The confirmation appears after the file is saved. The workflow requires no external credentials and sends no email.
-
-Local development defaults to the Git-ignored `.private/enquiries` directory. Production requires `ENQUIRY_STORAGE_DIR` to be an absolute path on a durable, private, writable volume outside all web-served directories. Set permissions for the application account and authorized staff. Configure backups, retention and access using the approved privacy policy. This implementation expects a Node.js deployment with persistent storage. Use a shared durable datastore or a delivery provider before deploying to infrastructure with ephemeral filesystems.
+The contact forms validate the request and prepare a message addressed to +91 78921 82255. Visitors review and send it in WhatsApp. The website does not store the message or confirm delivery.
 
 ## Production setup
 
@@ -21,7 +19,7 @@ Local development defaults to the Git-ignored `.private/enquiries` directory. Pr
 - After deployment, crawl the canonical HTTPS site and check final redirect destinations, indexability and sitemap entries. Verify the property in Google Search Console, submit `/sitemap.xml`, and inspect the homepage and priority service URLs.
 - Approve and finalize the privacy policy and terms, then update their indexing and sitemap configuration.
 - Replace illustrative portfolio concepts with approved client work when available.
-- Configure storage and submit a test enquiry through the deployed site. Confirm that authorized staff can retrieve it.
+- Send a test enquiry through the site and confirm receipt in the business WhatsApp account.
 
 ## Checks
 

@@ -1,3 +1,4 @@
+import { guideUrlSlugs } from "./route-slugs";
 import type { ServiceSlug } from "./service-guides";
 import { posts as seoPosts } from "./posts/seo";
 import { posts as googleAdsPosts } from "./posts/google-ads";
@@ -31,18 +32,12 @@ const references: Partial<Record<string, Reference>> = {
   "seo-friendly-website-launch": { href: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide", label: "Google SEO Starter Guide" },
 };
 
-const publishedGuideSlugs = new Set<string>([
-  "google-ads-budget-first-test",
-  "meta-instant-forms-vs-landing-pages",
-  "social-media-content-calendar",
-  "website-brief-for-service-business",
-]);
-
 export const guidePosts = (Object.keys(byService) as ServiceSlug[]).flatMap(service => (
-  byService[service].filter(({ slug }) => publishedGuideSlugs.has(slug)).map(post => ({
+  byService[service].filter(({ slug }) => Object.hasOwn(guideUrlSlugs, slug)).map(post => ({
     ...post,
     service,
-    path: `/blog/${post.slug}/`,
+    urlSlug: guideUrlSlugs[post.slug],
+    path: `/blog/${guideUrlSlugs[post.slug]}/`,
     cover: `/brand/signal/${service}.webp`,
     reference: references[post.slug],
   }))
@@ -51,5 +46,5 @@ export const guidePosts = (Object.keys(byService) as ServiceSlug[]).flatMap(serv
 export const blogPosts = [seoAuditPost, ...guidePosts];
 
 export function getBlogPost(slug: string) {
-  return guidePosts.find(post => post.slug === slug);
+  return guidePosts.find(post => post.urlSlug === slug);
 }

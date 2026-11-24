@@ -158,6 +158,7 @@
   border-radius: 18px;
   background: radial-gradient(ellipse at top right, #3a000e, #100406 68%);
   color: white;
+  text-decoration: none;
   transition: border-color .2s, box-shadow .2s, translate .2s;
 }
 
@@ -196,11 +197,12 @@
 
 .related-service-action {
   margin-top: auto;
-  padding-top: 8px;
-  color: #ff8585;
-  font-weight: 650;
-  text-decoration: underline;
-  text-underline-offset: .25em;
+  border-color: #b65f75;
+  text-decoration: none;
+}
+
+.related-service-card:is(:hover, :focus-visible) .related-service-action {
+  background: #900d2b;
 }
 
 @media (max-width: 1023px) {

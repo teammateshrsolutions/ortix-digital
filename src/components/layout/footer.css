@@ -1,0 +1,19 @@
+.site-footer {
+  border-top: 1px solid #e5e5e5;
+  background: white;
+  color: #171717;
+}
+
+.site-footer .footer-grid :is(h2, strong),
+.site-footer svg[stroke="currentColor"] {
+  color: inherit;
+}
+
+.site-footer a:not(.button, .brand):hover,
+.site-footer .business-links a:hover {
+  color: var(--burgundy);
+}
+
+.site-footer .footer-bottom {
+  border-top: 1px solid #e5e5e5;
+}

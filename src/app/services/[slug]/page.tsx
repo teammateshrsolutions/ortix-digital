@@ -1,8 +1,8 @@
+import { servicePath, serviceUrlSlugs } from "@/data/route-slugs";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services } from "@/data/services";
-import { blogPosts } from "@/data/blog";
 import { serviceGuides, type ServiceSlug } from "@/data/service-guides";
 import { serviceRegions, servicesSection } from "@/data/navigation";
 import { InnerHero } from "@/components/layout/inner-page";
@@ -12,10 +12,10 @@ import { organizationId, pageMetadata, siteUrl } from "@/lib/seo";
 import { SeoSections } from "./seo-sections";
 import { GoogleAdsSections } from "./google-ads-sections";
 import { GuidedServiceSections } from "./guided-service-sections";
+import { ServiceReport } from "./service-report";
 import "./service-design.css";
 
 type Props = { params: Promise<{ slug: string }> };
-const path = (slug: string) => `/services/${slug}/`;
 
 const designs: Record<ServiceSlug, {
   description: string;
@@ -55,33 +55,31 @@ const designs: Record<ServiceSlug, {
 };
 
 function findService(slug: string) {
-  return services.find((service) => service.slug === slug) ?? notFound();
+  return services.find((service) => serviceUrlSlugs[service.slug] === slug) ?? notFound();
 }
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return services.map(({ slug }) => ({ slug }));
+  return services.map(({ slug }) => ({ slug: serviceUrlSlugs[slug] }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const service = findService((await params).slug);
-  return pageMetadata(`${service.headline} | ORTIX DIGITAL`, serviceGuides[service.slug].description, path(service.slug));
+  return pageMetadata(`${service.headline} | ORTIX DIGITAL`, serviceGuides[service.slug].description, servicePath(service.slug));
 }
 
 export default async function ServicePage({ params }: Props) {
   const service = findService((await params).slug);
   const guide = serviceGuides[service.slug];
   const design = designs[service.slug];
-  const articles = blogPosts.filter(({ service: category }) => category === service.slug);
-  const hasWebsiteCaseStudy = service.slug === "seo" || service.slug === "google-ads" || service.slug === "website-development";
 
   return <div className="service-landing">
     <InnerHero
       title={service.headline}
       description={design.description}
       parents={[{ label: "Services", href: servicesSection }]}
-      current={{ label: service.title, href: path(service.slug) }}
+      current={{ label: service.title, href: servicePath(service.slug) }}
       eyebrow={design.eyebrow}
       visual={<Image className="service-hero-art" src={`/brand/signal/${service.slug}.webp`} alt="" width={588} height={441} sizes="(max-width: 767px) 90vw, (max-width: 1320px) 42vw, 550px" preload />}
     >
@@ -91,35 +89,23 @@ export default async function ServicePage({ params }: Props) {
       </div>
       <p className="service-consultation-note">During the free consultation, we’ll discuss your goals, what you’ve tried, and the next step that fits your budget.</p>
     </InnerHero>
+    <ServiceReport slug={service.slug} serviceName={service.slug === "seo" ? "SEO" : service.title} />
     {service.slug === "seo" ? <SeoSections /> : service.slug === "google-ads" ? <GoogleAdsSections /> : (
       <GuidedServiceSections slug={service.slug} title={service.title} />
     )}
-    {articles.length > 0 && <section className="section" aria-labelledby="service-guides-heading"><div className="shell">
-      <h2 className="section-title" id="service-guides-heading">{service.title} Guides</h2>
-      <ul className="related-services-grid">
-        {articles.map(({ path, title, description }) => <li key={path}>
-          <Link className="related-service-card" href={path}><h3>{title}</h3><p>{description}</p></Link>
-        </li>)}
-      </ul>
-    </div></section>}
-    <div className="shell pb-8">
-      {hasWebsiteCaseStudy
-        ? <Link className="text-link" href="/portfolio/#case-studies">See how we built the Ortix website and enquiry form</Link>
-        : <Link className="text-link" href="/portfolio/#concept-showcase">Explore our illustrative design and campaign concepts</Link>}
-    </div>
     <section className="section paper" aria-labelledby="related-services-heading"><div className="shell">
       <h2 className="section-title" id="related-services-heading">Explore Related Services</h2>
       <ul className="related-services-grid">
         {services.filter(({ slug }) => guide.related.includes(slug)).map(({ slug, title, description }) => <li key={slug}>
-          <Link className="related-service-card" href={path(slug)}>
+          <Link className="related-service-card" href={servicePath(slug)}>
             <div className="related-service-icon"><SignalServiceIcon service={slug} /></div>
             <h3>{title}</h3>
             <p>{description}</p>
-            <span className="related-service-action" aria-hidden="true">Explore service</span>
+            <span className="button related-service-action" aria-hidden="true">Explore service</span>
           </Link>
         </li>)}
       </ul>
     </div></section>
-    <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: service.title, description: guide.description, url: siteUrl(path(service.slug)), areaServed: serviceRegions, provider: { "@type": "Organization", "@id": organizationId, name: "ORTIX DIGITAL" } }} />
+    <JsonLd data={{ "@context": "https://schema.org", "@type": "Service", name: service.title, description: guide.description, url: siteUrl(servicePath(service.slug)), areaServed: serviceRegions, provider: { "@type": "Organization", "@id": organizationId, name: "ORTIX DIGITAL" } }} />
   </div>;
 }

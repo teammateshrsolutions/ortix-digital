@@ -1,0 +1,67 @@
+﻿.service-report-section { background: #fcf7f9; }
+
+.service-report-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: clamp(16px, 3vw, 36px);
+  align-items: start;
+}
+
+.service-report-tools { display: grid; gap: 12px; }
+.service-report-tools li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: clamp(14px, 2vw, 22px);
+  border: 1px solid #e6d8de;
+  border-radius: 14px;
+  background: white;
+}
+
+.service-report-tool-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--burgundy);
+  color: white;
+}
+
+.service-report-tools h3 { font-size: 1.1rem; }
+.service-report-tools p { margin-top: .45rem; color: #51454a; }
+
+.service-dashboard {
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+  margin: 0;
+  padding: clamp(14px, 3vw, 28px);
+  border: 1px solid #e6d8de;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 16px 44px #26000912;
+}
+
+.service-dashboard-title { display: flex; gap: 12px; align-items: start; justify-content: space-between; flex-wrap: wrap; }
+.service-dashboard-title h3 { font-size: 1.3rem; }
+.service-dashboard-title p { margin-top: .3rem; color: #51454a; font-size: .875rem; }
+.service-dashboard-title > span { border-radius: 5px; padding: .25rem .5rem; background: #faedf1; color: var(--burgundy); font-size: .8rem; font-weight: 750; }
+
+.service-dashboard-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.service-dashboard-metrics div { padding: clamp(8px, 2vw, 16px); border: 1px solid #eadbe0; border-radius: 10px; }
+.service-dashboard-metrics dt { color: #51454a; font-size: .8rem; }
+.service-dashboard-metrics dd { color: var(--burgundy); margin: .25rem 0 0; font-size: clamp(1rem, 3vw, 1.65rem); overflow-wrap: anywhere; font-weight: 750; }
+
+.service-dashboard-chart { padding: 14px; border: 1px solid #eadbe0; border-radius: 10px; }
+.service-dashboard-chart h4 { font-size: .925rem; font-weight: 750; }
+.service-dashboard-bars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: 8px; margin-top: 16px; }
+.service-dashboard-bars li { display: grid; justify-items: center; gap: 5px; color: #51454a; font-size: .8rem; text-align: center; overflow-wrap: anywhere; }
+.service-dashboard-bar { display: block; width: min(60%, 52px); border-radius: 4px 4px 0 0; background: linear-gradient(#a5294c, #6d001a); }
+
+.service-dashboard-note { padding: 12px; border-radius: 8px; background: #f8edf0; color: #3b222b; font-size: .9rem; }
+.service-dashboard-note p { margin-top: .25rem; }
+
+@media (max-width: 767px) {
+  .service-report-layout { grid-template-columns: minmax(0, 1fr); }
+}

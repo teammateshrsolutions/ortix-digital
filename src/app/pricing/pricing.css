@@ -1,0 +1,16 @@
+﻿.growth-package {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid #e3dadd;
+  border-radius: 1rem;
+  background: white;
+}
+
+.growth-package ul { display: grid; gap: .5rem; list-style: disc; padding-inline-start: 1.25rem; }
+.growth-package[data-recommended] { border-color: var(--burgundy); box-shadow: 0 0 0 1px var(--burgundy); }
+.package-recommendation { color: var(--burgundy); font-size: .875rem; font-weight: 750; margin-bottom: .5rem; }
+.package-price { color: var(--burgundy); font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 750; }
+.package-price span { color: #514d4d; font-size: .875rem; font-weight: 500; white-space: nowrap; }

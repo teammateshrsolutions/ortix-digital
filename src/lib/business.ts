@@ -6,6 +6,8 @@ export const legalContactEmail = "info@ortixdigital.com";
 export const businessEmail = configuredEmail && /^[^\s@?&#]+@[^\s@?&#]+\.[^\s@?&#]+$/.test(configuredEmail) ? configuredEmail : legalContactEmail;
 export const businessPhone = configuredPhone && /^\+[1-9]\d{7,14}$/.test(configuredPhone) ? configuredPhone : "+917892182255";
 
+export const businessWhatsAppUrl = "https://wa.me/917892182255";
+
 export const officeAddress = [
   "#2065, 3rd Stage, 16th B Cross",
   "Mother Dairy Cross, Yelahanka New Town",

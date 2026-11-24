@@ -1,3 +1,4 @@
+import { servicePath } from "@/data/route-slugs";
 import Link from "next/link";
 import { Search, Target, PanelsTopLeft, Megaphone, CodeXml, Palette } from "lucide-react";
 import { services } from "@/data/services";
@@ -20,7 +21,7 @@ export function ServiceCards({ variant = "default" }: { variant?: "default" | "s
         <div className="signal-service-copy">
           <h3>{service.title}</h3>
           <p className="copy">{service.description}</p>
-          <Link className="button" href={`/services/${service.slug}/`} aria-label={`Learn more about ${service.title}`}>Learn more</Link>
+          <Link className="text-link signal-service-link" href={servicePath(service.slug)} aria-label={`Learn more about ${service.title}`}>Learn more</Link>
         </div>
       </article>;
     }
@@ -28,7 +29,7 @@ export function ServiceCards({ variant = "default" }: { variant?: "default" | "s
     return <article className="service-card" key={service.slug}>
       <div className="service-icon"><Icon aria-hidden="true" /></div>
       <h3>{service.title}</h3><p className="copy">{service.description}</p>
-      <Link className="text-link" href={`/services/${service.slug}/`} aria-label={`Learn more about ${service.title}`}>Learn more</Link>
+      <Link className="text-link" href={servicePath(service.slug)} aria-label={`Learn more about ${service.title}`}>Learn more</Link>
     </article>;
   })}</div>;
 }

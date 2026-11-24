@@ -16,8 +16,8 @@ export default function PrivacyPage() {
         <h2>How we use your information</h2>
         <p>We use the information to review your enquiry, respond to questions, and discuss your project. If you ask for a proposal, we use the details you provide to prepare it and follow up with you.</p>
 
-        <h2>Where form submissions are stored</h2>
-        <p>The website saves submitted enquiries in server-side storage outside the public website files. Please keep passwords, payment details, and other sensitive information out of your enquiry.</p>
+        <h2>How WhatsApp enquiries are shared</h2>
+        <p>The website uses the form details to prepare a WhatsApp message. When you open the message, WhatsApp receives those details. Ortix Digital receives your enquiry once you send it in WhatsApp. Please keep passwords, payment details, and other sensitive information out of your enquiry.</p>
 
         <h2>Privacy requests</h2>
         <p>To ask about information you shared with us or request access, a correction, or deletion, email <a className="underline" href={`mailto:${legalContactEmail}`}>{legalContactEmail}</a>.</p>
