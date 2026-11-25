@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Script from "next/script";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { WhatsAppLink } from "@/components/layout/whatsapp-link";
@@ -40,7 +39,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-IN" className={inter.variable}>
-      {indexingEnabled && <Script id="meta-pixel" strategy="beforeInteractive">{metaPixelCode}</Script>}
+      <head>
+        {indexingEnabled && <script id="meta-pixel" dangerouslySetInnerHTML={{ __html: metaPixelCode }} />}
+      </head>
       <body id="top">
         {indexingEnabled && <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element -- Meta's 1px pixel must load without JavaScript. */}
