@@ -10,6 +10,13 @@ import { serviceRegions } from "@/data/navigation";
 import { businessEmail, businessPhone } from "@/lib/business";
 import "./globals.css";
 
+const tagManagerId = "GTM-T9BR5QXH";
+const tagManagerBootstrap = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+`;
+
 const metaPixelId = "1926140735024385";
 const metaPixelCode = `
 !function(f,b,e,v,n,t,s)
@@ -40,6 +47,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-IN" className={inter.variable}>
       <head>
+        {indexingEnabled && <>
+          <script id="gtm-bootstrap" dangerouslySetInnerHTML={{ __html: tagManagerBootstrap }} />
+          <script async src={`https://www.googletagmanager.com/gtm.js?id=${tagManagerId}`} />
+        </>}
         {indexingEnabled && <script id="meta-pixel" dangerouslySetInnerHTML={{ __html: metaPixelCode }} />}
       </head>
       <body id="top">
