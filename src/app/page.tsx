@@ -10,7 +10,12 @@ import { blogPosts } from "@/data/blog";
 import { homeDescription, homeTitle, pageMetadata } from "@/lib/seo";
 import "./signal.css";
 
-export const metadata = pageMetadata(homeTitle, homeDescription, "/");
+export const metadata = {
+  ...pageMetadata(homeTitle, homeDescription, "/"),
+  verification: {
+    other: { "facebook-domain-verification": "0p0upwtk349jy3kafo2yec8zs4y3ku" },
+  },
+};
 
 const process = [
   ["Discover", "Review where customers find you today and what happens when they reach your site."],
